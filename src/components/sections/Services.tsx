@@ -54,9 +54,9 @@ const services = [
 export default function ServicesSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  function toggle(index: number) {
+  const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
-  }
+  };
 
   return (
     <section className="bg-[#6A5C4D] py-24 px-6 md:px-16">
@@ -65,44 +65,53 @@ export default function ServicesSection() {
           Our Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {services.map(({ name, description, icon }, i) => (
-            <div
-              key={name}
-              className={`flex flex-col items-center text-center cursor-pointer border border-white/15 
-                bg-white/5 backdrop-blur-sm
-                shadow-md transition-transform duration-300
-                ${openIndex === i ? "shadow-lg scale-[1.05]" : "hover:shadow-lg hover:scale-[1.05]"}
-              `}
-              onClick={() => toggle(i)}
-              aria-expanded={openIndex === i}
-              aria-controls={`desc-${i}`}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") toggle(i);
-              }}
-            >
-              <div className="w-16 h-16 relative mb-5">
-                <Image
-                  src={icon}
-                  alt={`${name} icon`}
-                  fill
-                  sizes="64px"
-                  className="object-contain drop-shadow-md"
-                />
-              </div>
-              <h3 className="font-serif text-xl text-[#F2F0EC] select-none">{name}</h3>
+          {services.map(({ name, description, icon }, i) => {
+            const isOpen = openIndex === i;
 
+            return (
               <div
-                id={`desc-${i}`}
-                className={`overflow-hidden text-[#E3E1DC] font-light mt-4 max-w-[280px] text-sm leading-relaxed
-                  max-h-[1000px] transition-max-height duration-500 ease-in-out
+                key={name}
+                role="button"
+                aria-expanded={isOpen}
+                aria-controls={`desc-${i}`}
+                tabIndex={0}
+                onClick={() => toggle(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") toggle(i);
+                }}
+                className={`group flex flex-col items-center text-center cursor-pointer 
+                  border border-white/15 bg-white/5 backdrop-blur-sm
+                  shadow-md transition-transform duration-300 ease-in-out
+                  ${isOpen ? "shadow-lg scale-[1.05]" : "hover:shadow-lg hover:scale-[1.05]"}
                 `}
               >
-                {openIndex === i ? description : null}
+                <div className="w-16 h-16 relative mb-5">
+                  <Image
+                    src={icon}
+                    alt={`${name} icon`}
+                    fill
+                    sizes="64px"
+                    className="object-contain drop-shadow-md"
+                  />
+                </div>
+                <h3 className="font-serif text-xl text-[#F2F0EC] select-none">
+                  {name}
+                </h3>
+
+                <div
+                  id={`desc-${i}`}
+                  className={`overflow-hidden transition-[max-height] duration-500 ease-in-out 
+                    text-[#E3E1DC] font-light text-sm leading-relaxed mt-4 max-w-[280px]
+                    ${isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}
+                  `}
+                >
+                  <p className="transition-opacity duration-300 delay-100">
+                    {isOpen && description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
