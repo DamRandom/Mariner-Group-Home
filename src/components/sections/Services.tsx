@@ -68,13 +68,11 @@ export default function ServicesSection() {
           {services.map(({ name, description, icon }, i) => (
             <div
               key={name}
-              className={`
-    flex flex-col items-center text-center cursor-pointer
-    border border-white/10 bg-white/5 backdrop-blur-sm
-    shadow-md transition-all duration-300 ease-[cubic-bezier(.25,1,.5,1)]
-    hover:shadow-lg hover:-translate-y-1 active:scale-[0.98]
-    rounded-lg px-6 py-8
-  `}
+              className={`flex flex-col items-center text-center cursor-pointer border border-white/15 
+                bg-white/5 backdrop-blur-sm
+                shadow-md transition-transform duration-300
+                ${openIndex === i ? "shadow-lg scale-[1.05]" : "hover:shadow-lg hover:scale-[1.05]"}
+              `}
               onClick={() => toggle(i)}
               aria-expanded={openIndex === i}
               aria-controls={`desc-${i}`}
@@ -93,23 +91,15 @@ export default function ServicesSection() {
                   className="object-contain drop-shadow-md"
                 />
               </div>
-              <h3 className="font-serif text-xl text-[#F2F0EC] select-none">
-                {name}
-              </h3>
+              <h3 className="font-serif text-xl text-[#F2F0EC] select-none">{name}</h3>
 
               <div
                 id={`desc-${i}`}
-                className={`
-      overflow-hidden text-[#E3E1DC] font-light mt-4 max-w-[280px] text-sm leading-relaxed
-      transition-[max-height,opacity] duration-500 ease-in-out
-      ${
-        openIndex === i
-          ? "max-h-40 opacity-100"
-          : "max-h-0 opacity-0 pointer-events-none"
-      }
-    `}
+                className={`overflow-hidden text-[#E3E1DC] font-light mt-4 max-w-[280px] text-sm leading-relaxed
+                  max-h-[1000px] transition-max-height duration-500 ease-in-out
+                `}
               >
-                {description}
+                {openIndex === i ? description : null}
               </div>
             </div>
           ))}

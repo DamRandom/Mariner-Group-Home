@@ -26,40 +26,38 @@ export default function Footer() {
         <div className="w-32 h-1.5 bg-[#6A5C4D] mb-10 mx-auto rounded-full" />
 
         <div className="flex flex-col md:flex-row justify-between items-end gap-12 h-full">
-          {/* Grupo Izquierdo: Branding */}
+          {/* Grupo Izquierdo: Logo + texto al lado */}
           <div className="flex-1 flex flex-col justify-end h-full items-start">
-            <Image
-              src="/images/logo.png"
-              alt="Mariner Group Home Logo"
-              width={64}
-              height={64}
-              className="mb-4 object-contain"
-            />
-            <div>
-              <h3 className="text-2xl font-serif text-[#37332f] mb-1">
-                Mariner Group Home
-              </h3>
-              <p className="text-sm">Evelyn Gonzalez Inc.</p>
-              <p className="text-sm mt-2">Home & Community Services</p>
-              <p className="text-xs text-[#a6a49c] mt-6">
-                © {new Date().getFullYear()} Mariner Group Home. All rights
-                reserved.
-              </p>
+            <div className="flex items-start gap-4">
+              <div className="w-[85px] h-[76px] relative">
+                <Image
+                  src="/images/logo.png"
+                  alt="Mariner Group Home Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-serif text-[#37332f] mb-1">
+                  Mariner Group Home
+                </h3>
+                <p className="text-sm">Evelyn Gonzalez Inc.</p>
+                <p className="text-sm mt-2">Home & Community Services</p>
+              </div>
             </div>
+            <p className="text-xs text-[#6A5C4D] mt-6">
+              © {new Date().getFullYear()} Mariner Group Home. All rights reserved.
+            </p>
           </div>
 
           {/* Grupo Derecho: Contacto */}
           <div className="flex-1 flex flex-col justify-end h-full space-y-5 text-left md:text-right">
             <p className="flex items-start md:justify-end gap-3">
-              <MdLocationOn className="text-xl text-[#c9bfa4] mt-0.5" />
-              <span>
-                4432 Mariner Blvd,
-                <br />
-                Spring Hill, FL 34609
-              </span>
+              <MdLocationOn className="text-xl text-[#6A5C4D] mt-0.5" />
+              <span>4432 Mariner Blvd, Spring Hill, FL 34609</span>
             </p>
             <p className="flex items-start md:justify-end gap-3">
-              <MdPhone className="text-xl text-[#c9bfa4] mt-0.5" />
+              <MdPhone className="text-xl text-[#6A5C4D] mt-0.5" />
               <span>
                 813-347-3060
                 <br />
@@ -67,7 +65,7 @@ export default function Footer() {
               </span>
             </p>
             <p className="flex items-center md:justify-end gap-3">
-              <MdEmail className="text-lg text-[#c9bfa4]" />
+              <MdEmail className="text-lg text-[#6A5C4D]" />
               absolutequalityservices752@gmail.com
             </p>
           </div>

@@ -27,23 +27,28 @@ export default function Hero() {
       {/* Content fade-in from bottom */}
       <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 flex items-center">
         <motion.div
-          className="max-w-xl"
+          className="w-full max-w-3xl"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
-          <h1 className="text-4xl md:text-6xl font-serif text-[#717A63] leading-tight mb-6">
-            Compassionate Care<br />Rooted in Dignity
-          </h1>
-          <p className="text-lg md:text-xl text-[#717A63] font-light mb-10">
-            Providing home & community services where empathy meets excellence.
+          <div className="flex items-center gap-6 mb-6">
+            <div className="relative w-[90px] h-[80px] flex-shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="Mariner Group Home Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+            <h1 className="text-4xl md:text-6xl font-serif text-[#717A63] whitespace-nowrap">
+              Mariner Group Home
+            </h1>
+          </div>
+          <p className="text-lg md:text-xl text-[#717A63] font-light">
+            Home & Community Services with dignity, care, and a name you can trust.
           </p>
-          <a
-            href="#about"
-            className="inline-block bg-[#695850] hover:bg-[#AD9E8E] text-[#F2F0EC] px-6 py-3 text-sm font-semibold tracking-wide uppercase rounded-md transition-all duration-200"
-          >
-            Learn More
-          </a>
         </motion.div>
       </div>
 
@@ -55,10 +60,7 @@ export default function Hero() {
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
         >
-          <path
-            d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z"
-            fill="#6A5C4D"
-          />
+          <path d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z" fill="#6A5C4D" />
         </svg>
       </div>
     </section>
