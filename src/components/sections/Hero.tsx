@@ -1,12 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-[#AD9E8E]">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Background with slight zoom-in animation */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.05 }}
+        transition={{ duration: 30, ease: "easeOut" }}
+      >
         <Image
           src="/images/hero1.jpg"
           alt="Mariner Group Home"
@@ -16,11 +22,16 @@ export default function Hero() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#fbfbfb] via-[#fbfbfb]/80 to-transparent" />
         <div className="absolute inset-0 bg-[#adc69c]/30 mix-blend-multiply" />
-      </div>
+      </motion.div>
 
-      {/* Content */}
+      {/* Content fade-in from bottom */}
       <div className="relative z-10 h-full max-w-7xl mx-auto px-6 md:px-16 flex items-center">
-        <div className="max-w-xl">
+        <motion.div
+          className="max-w-xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
           <h1 className="text-4xl md:text-6xl font-serif text-[#717A63] leading-tight mb-6">
             Compassionate Care<br />Rooted in Dignity
           </h1>
@@ -33,7 +44,7 @@ export default function Hero() {
           >
             Learn More
           </a>
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom solid wave */}
