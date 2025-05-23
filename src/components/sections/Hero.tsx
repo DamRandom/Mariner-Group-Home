@@ -49,7 +49,15 @@ export default function Hero() {
               Mariner Group Home
             </h1>
           </div>
-          <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-[#717A63] font-light max-w-[65ch]">
+
+          <p
+            className="text-[clamp(1rem,2.5vw,1.25rem)] text-[#717A63] font-light"
+            style={{
+              maxWidth: "70vw",
+              whiteSpace: "normal",
+              wordWrap: "break-word",
+            }}
+          >
             Home & Community Services with dignity, care, and a name you can
             trust.
           </p>

@@ -13,7 +13,19 @@ export default function AboutUsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="relative w-full h-[clamp(16rem,40vw,28rem)] rounded-[40%_30%_60%_50%/30%_60%_30%_50%] overflow-hidden shadow-lg"
+          role="button"
+          tabIndex={0}
+          className={`relative w-full h-[clamp(16rem,40vw,28rem)]
+            border border-white/15 bg-white/5 backdrop-blur-sm shadow-md
+            cursor-pointer transition-all duration-300 ease-in-out
+            hover:shadow-lg hover:scale-[1.05] focus:shadow-lg focus:scale-[1.05]
+          `}
+          onKeyDown={e => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.currentTarget.classList.toggle("hover:shadow-lg");
+              e.currentTarget.classList.toggle("hover:scale-[1.05]");
+            }
+          }}
         >
           <Image
             src="/images/aboutus.jpg"
@@ -21,9 +33,9 @@ export default function AboutUsSection() {
             fill
             priority
             sizes="(max-width: 768px) 100vw, 40vw"
-            className="object-cover object-center rounded-[40%_30%_60%_50%/30%_60%_30%_50%]"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-[#adc69c]/30 mix-blend-multiply pointer-events-none rounded-[40%_30%_60%_50%/30%_60%_30%_50%]" />
+          <div className="absolute inset-0 bg-[#adc69c]/30 mix-blend-multiply pointer-events-none" />
         </motion.div>
 
         {/* Text */}
