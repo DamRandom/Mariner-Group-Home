@@ -16,19 +16,23 @@ export default function PhilosophySection() {
           className="max-w-xl"
         >
           <h2 className="text-4xl md:text-5xl font-serif leading-tight mb-8 text-[#F2F0EC]">
-            <span className="block text-[#E3E1DC]">More Than Care,</span>
-            <span className="block text-white">It’s a Philosophy</span>
+            <span className="block text-[#E3E1DC]">Our Philosophy</span>
           </h2>
-          <p className="text-base md:text-lg font-light leading-relaxed mb-6 text-[#e6e3dd]">
-            We don’t follow templates. We build care plans with empathy,
-            respect, and clarity — ensuring dignity isn’t lost in the process.
+
+          <p className="text-base md:text-lg font-light leading-relaxed mb-6 text-[#e6e3dd] text-justify">
+            At Mariner Group Home, we believe every person deserves to live with dignity, regardless of their abilities. We don’t start with diagnoses, we start with stories. We don’t organize routines, we build lives. Our philosophy isn’t written in a manual — it’s a daily practice: respect, consistency, and real presence.
           </p>
-          <p className="italic text-sm text-[#F2F0EC] border-l-4 border-[#adc69c] pl-4 mt-6">
-            “Care should feel like a relationship, not a routine.”
-            <br />
-            <span className="not-italic font-semibold text-[#D7D5CE] block mt-2">
-              — Mariner Group Home
-            </span>
+
+          <p className="text-base md:text-lg font-light leading-relaxed mb-6 text-[#e6e3dd] text-justify">
+            We don’t work “for” someone. We live with them. We listen without rush. We respond without scripts. We adapt to each resident’s pace, without imposing structures foreign to their world.
+          </p>
+
+          <p className="text-base md:text-lg font-light leading-relaxed mb-6 text-[#e6e3dd] text-justify">
+            We don’t want to be the best. We want to be the right ones. The ones who show up when needed, the ones who don’t fail at the basics, the ones who understand that caring is not intervening but accompanying.
+          </p>
+
+          <p className="text-base md:text-lg font-light leading-relaxed mb-6 text-[#e6e3dd] text-justify">
+            This house has no long corridors or closed doors. It has shared armchairs, simple conversations, and a calm that’s not taught, it’s cultivated. Our philosophy doesn’t aim to impress. It only aims to do what’s right, every day.
           </p>
         </motion.div>
 
