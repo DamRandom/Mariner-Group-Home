@@ -1,67 +1,84 @@
 "use client";
-
-import Image from "next/image";
+ 
 import { motion } from "framer-motion";
-
+import Link from "next/link";
+import SectionHeader from "../ui/SectionHeader";
+import { useLanguage } from "@/context/LanguageContext";
+  
 export default function AboutUsSection() {
+  const { t } = useLanguage();
+
   return (
-    <section className="bg-[#6A5C4D] text-[#F2F0EC] py-[clamp(4rem,8vw,6rem)] px-4 sm:px-8 md:px-16">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="bg-white text-primary py-24 pb-32 px-6 md:px-16 relative overflow-hidden">
+      {/* Decorative background elements for a "transition" feel */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-sky-100/30 rounded-full blur-[120px] translate-y-1/2 pointer-events-none" />
+
+      <div className="max-w-4xl mx-auto relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          role="button"
-          tabIndex={0}
-          className="relative w-full h-[clamp(16rem,40vw,28rem)] rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[1.05] focus:scale-[1.05]"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.currentTarget.classList.toggle("ring");
-            }
-          }}
         >
-          <Image
-            src="/images/aboutus.jpg"
-            alt="Mariner Group Home team and residence"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 40vw"
-            className="object-cover object-center rounded-2xl"
+          <SectionHeader 
+            title={t("about.title")}
+            align="center"
           />
-          <div className="absolute inset-0 bg-[#adc69c]/30 mix-blend-multiply pointer-events-none rounded-2xl" />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
-          className="max-w-xl"
         >
-          <h2 className="text-[clamp(2rem,5vw,3rem)] font-serif leading-tight mb-6 text-[#F2F0EC]">
-            A home built on trust
-          </h2>
-          <p className="text-[clamp(1rem,2.3vw,1.25rem)] font-light leading-relaxed mb-6 text-justify">
-            Mariner Group Home is a long-term residence for adults with
-            developmental disabilities. Six individuals live here — not
-            patients, not clients — residents, in every sense of the word.
+          <p className="text-xl md:text-2xl font-light leading-relaxed mb-16 text-primary/80 text-justify">
+            {t("about.description")}
           </p>
-          <p className="text-[clamp(1rem,2.3vw,1.25rem)] font-light leading-relaxed mb-6 text-justify">
-            Our support is quiet, daily, and personal. Meals, hygiene,
-            medication — all handled with consistency and dignity. No uniforms.
-            No rotations. Just people who care, doing their job the right way.
-          </p>
-          <p className="text-[clamp(1rem,2.3vw,1.25rem)] font-light leading-relaxed mb-6 text-justify">
-            Families trust us because we don’t overpromise. We’re not a
-            facility. We’re a house with a name on the mailbox and lights on in
-            the kitchen. We’re present — day after day, moment after moment.
-          </p>
-          <p className="italic text-sm text-[#F2F0EC]/90">
-            “What we give is time, patience, and a sense of belonging. That’s
-            what real care looks like.”
-            <br />— Evelyn Gonzalez, Founder
-          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative px-8 py-12 md:px-16 md:py-16 rounded-[2.5rem] bg-sky-50/50 border border-sky-100/50 backdrop-blur-sm shadow-sm"
+        >
+          {/* Decorative quote mark */}
+          <span className="absolute top-6 left-8 text-7xl text-primary/10 font-serif pointer-events-none leading-none">“</span>
+          
+          <div className="relative z-10">
+            <p className="text-2xl md:text-3xl font-serif text-primary italic leading-snug mb-8">
+              {t("about.founderQuote")}
+            </p>
+            <div className="flex flex-col items-center">
+              <div className="w-12 h-0.5 bg-primary/20 mb-4" />
+              <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-primary/60 font-semibold">
+                {t("about.founderName")}
+              </p>
+            </div>
+          </div>
+
+          <span className="absolute bottom-6 right-8 text-7xl text-primary/10 font-serif pointer-events-none rotate-180 leading-none">“</span>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
+          <Link href="/about">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-primary text-white px-10 py-5 rounded-full font-medium shadow-xl hover:bg-secondary transition-all duration-300 border border-primary/10"
+            >
+              {t("about.readMore")}
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

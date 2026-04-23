@@ -1,11 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-[#AD9E8E]">
+    <section id="home" className="relative w-full h-screen overflow-hidden bg-white">
       {/* Background with slight zoom-in animation */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -14,7 +18,7 @@ export default function Hero() {
         transition={{ duration: 30, ease: "easeOut" }}
       >
         <Image
-          src="/images/hero1.jpg"
+          src="/images/hero.jpg"
           alt="Mariner Group Home"
           fill
           priority
@@ -22,8 +26,7 @@ export default function Hero() {
           className="object-cover object-[75%_50%] w-full h-full"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#fbfbfb] via-[#fbfbfb]/80 to-transparent" />
-        <div className="absolute inset-0 bg-[#adc69c]/30 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
       </motion.div>
 
       {/* Content fade-in from bottom */}
@@ -45,22 +48,42 @@ export default function Hero() {
                 className="object-contain"
               />
             </div>
-            <h1 className="text-[clamp(1.8rem,5vw,4rem)] font-serif text-[#717A63] whitespace-nowrap">
-              Mariner Group Home
+            <h1 className="text-[clamp(1.8rem,5vw,4rem)] font-serif text-primary whitespace-nowrap">
+              {t("hero.title")}
             </h1>
           </div>
 
           <p
-            className="text-[clamp(1rem,2.5vw,1.25rem)] text-[#717A63] font-light"
+            className="text-[clamp(1rem,2.5vw,1.25rem)] text-primary/80 font-light mb-10 text-justify"
             style={{
               maxWidth: "70vw",
               whiteSpace: "normal",
               wordWrap: "break-word",
             }}
           >
-            Home & Community Services with dignity, care, and a name you can
-            trust.
+            {t("hero.subtitle")}
           </p>
+
+          <div className="flex flex-wrap gap-4">
+            <Link href="#contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary text-white px-8 py-4 rounded-full font-medium shadow-lg hover:bg-secondary transition-colors duration-300"
+              >
+                {t("hero.contactBtn")}
+              </motion.button>
+            </Link>
+            <a href="tel:8133473060">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-primary border border-primary/20 px-8 py-4 rounded-full font-medium shadow-sm hover:bg-primary/5 transition-colors duration-300"
+              >
+                {t("hero.callBtn")}
+              </motion.button>
+            </a>
+          </div>
         </motion.div>
       </div>
 
@@ -74,7 +97,8 @@ export default function Hero() {
         >
           <path
             d="M0,0 C300,100 900,0 1200,100 L1200,120 L0,120 Z"
-            fill="#6A5C4D"
+            fill="currentColor"
+            className="text-white"
           />
         </svg>
       </div>

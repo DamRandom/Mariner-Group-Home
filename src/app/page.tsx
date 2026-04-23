@@ -1,18 +1,26 @@
-import AboutUsSection from "@/components/sections/AboutUsSection";
 import Hero from "@/components/sections/Hero";
-import ServicesSection from "@/components/sections/Services";
+import AboutUsSection from "@/components/sections/AboutUsSection";
+import HomeGallery from "@/components/sections/HomeGallery";
+import CoreValues from "@/components/sections/CoreValues";
 import PhilosophySection from "@/components/sections/PhilosophySection";
-import CallToAction from "@/components/sections/CallToAction";
+import ServicesSection from "@/components/sections/Services";
+import TrustSection from "@/components/sections/TrustSection";
+import RealLifeGallery from "@/components/sections/RealLifeGallery";
+import ContactSection from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#fbfbfb] text-[#635c54]">
+    <main className="bg-white text-primary">
       <Hero />
       <AboutUsSection />
-      <ServicesSection />
+      <HomeGallery />
+      <CoreValues />
       <PhilosophySection />
-      <CallToAction />
+      <ServicesSection />
+      <TrustSection />
+      <RealLifeGallery />
+      <ContactSection />
       <Footer />
     </main>
   );

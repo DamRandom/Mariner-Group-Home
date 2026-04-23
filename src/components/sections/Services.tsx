@@ -1,118 +1,127 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-
-const services = [
-  {
-    name: "Personal Care",
-    description: "Assisting with daily personal needs to enhance comfort.",
-    icon: "/images/icons/personal-care.png",
-  },
-  {
-    name: "Companion Care",
-    description: "Providing company and emotional support.",
-    icon: "/images/icons/companion-care.png",
-  },
-  {
-    name: "Hygiene Assistance",
-    description: "Helping with bathing, grooming, and hygiene tasks.",
-    icon: "/images/icons/hygiene-assistance.png",
-  },
-  {
-    name: "Skilled Nursing",
-    description: "Professional nursing care for medical needs.",
-    icon: "/images/icons/skilled-nursing.png",
-  },
-  {
-    name: "Assisted Living",
-    description: "Support with everyday activities in a safe environment.",
-    icon: "/images/icons/assisted-living.png",
-  },
-  {
-    name: "Independent Living",
-    description: "Empowering autonomy with minimal support.",
-    icon: "/images/icons/independent-living.png",
-  },
-  {
-    name: "Meal Preparation",
-    description: "Preparing nutritious meals tailored to needs.",
-    icon: "/images/icons/meal-preparation.png",
-  },
-  {
-    name: "Grocery Shopping",
-    description: "Assistance with shopping errands.",
-    icon: "/images/icons/grocery-shopping.png",
-  },
-  {
-    name: "Medication Reminders",
-    description: "Ensuring timely medication intake.",
-    icon: "/images/icons/medication-reminders.png",
-  },
-];
+import { motion } from "framer-motion";
+import { 
+  FiHeart, 
+  FiActivity,
+  FiHome,
+  FiUsers,
+  FiCheckCircle
+} from "react-icons/fi";
+import SectionHeader from "../ui/SectionHeader";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
 
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const services = [
+    {
+      id: "01",
+      name: t("services.personalCare.name") as string,
+      description: t("services.personalCare.desc") as string,
+      icon: <FiHeart className="w-8 h-8" />,
+      features: t("services.personalCare.features") as string[],
+      color: "bg-sky-50 text-secondary",
+      border: "border-sky-100"
+    },
+    {
+      id: "02",
+      name: t("services.medication.name") as string,
+      description: t("services.medication.desc") as string,
+      icon: <FiActivity className="w-8 h-8" />,
+      features: t("services.medication.features") as string[],
+      color: "bg-sky-50 text-secondary",
+      border: "border-sky-100"
+    },
+    {
+      id: "03",
+      name: t("services.dailyLiving.name") as string,
+      description: t("services.dailyLiving.desc") as string,
+      icon: <FiHome className="w-8 h-8" />,
+      features: t("services.dailyLiving.features") as string[],
+      color: "bg-sky-50 text-secondary",
+      border: "border-sky-100"
+    },
+    {
+      id: "04",
+      name: t("services.community.name") as string,
+      description: t("services.community.desc") as string,
+      icon: <FiUsers className="w-8 h-8" />,
+      features: t("services.community.features") as string[],
+      color: "bg-sky-50 text-secondary",
+      border: "border-sky-100"
+    },
+  ];
 
   return (
-    <section className="bg-[#6A5C4D] py-24 px-6 md:px-16">
-      <div className="max-w-7xl mx-auto bg-[#717A63] p-12 shadow-lg">
-        <h2 className="text-4xl md:text-5xl font-serif text-[#F2F0EC] mb-16 text-center leading-tight">
-          Our Services
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {services.map(({ name, description, icon }, i) => {
-            const isOpen = openIndex === i;
+    <section id="services" className="relative bg-white py-32 overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-secondary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-            return (
-              <div
-                key={name}
-                role="button"
-                aria-expanded={isOpen}
-                aria-controls={`desc-${i}`}
-                tabIndex={0}
-                onClick={() => toggle(i)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") toggle(i);
-                }}
-                className={`group flex flex-col items-center text-center cursor-pointer 
-                  border border-white/15 bg-white/5 backdrop-blur-sm
-                  shadow-md transition-transform duration-300 ease-in-out
-                  ${isOpen ? "shadow-lg scale-[1.05]" : "hover:shadow-lg hover:scale-[1.05]"}
-                `}
-              >
-                <div className="w-16 h-16 relative mb-5">
-                  <Image
-                    src={icon}
-                    alt={`${name} icon`}
-                    fill
-                    sizes="64px"
-                    className="object-contain drop-shadow-md"
-                  />
+      <div className="relative max-w-7xl mx-auto px-6 md:px-16">
+        <SectionHeader 
+          title={t("services.title") as string}
+          subtitle={t("services.subtitle") as string}
+          align="center"
+        />
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`group relative p-10 bg-white rounded-[2.5rem] border ${service.border} hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2`}
+            >
+              {/* Number watermark */}
+              <span className="absolute top-8 right-10 text-8xl font-serif text-primary/5 select-none transition-colors group-hover:text-primary/10">
+                {service.id}
+              </span>
+
+              <div className="flex flex-col md:flex-row gap-8 relative z-10">
+                <div className={`w-20 h-20 shrink-0 flex items-center justify-center rounded-2xl ${service.color} transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 shadow-sm`}>
+                  {service.icon}
                 </div>
-                <h3 className="font-serif text-xl text-[#F2F0EC] select-none">
-                  {name}
-                </h3>
-
-                <div
-                  id={`desc-${i}`}
-                  className={`overflow-hidden transition-[max-height] duration-500 ease-in-out 
-                    text-[#E3E1DC] font-light text-sm leading-relaxed mt-4 max-w-[280px]
-                    ${isOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"}
-                  `}
-                >
-                  <p className="transition-opacity duration-300 delay-100">
-                    {isOpen && description}
+                
+                <div className="flex-1">
+                  <h3 className="text-2xl md:text-3xl font-serif text-primary mb-4">
+                    {service.name}
+                  </h3>
+                  <p className="text-primary/70 mb-8 leading-relaxed text-lg font-light text-justify">
+                    {service.description}
                   </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 pt-6 border-t border-primary/5">
+                    {(service.features as string[]).map((feature) => (
+                      <div key={feature} className="flex items-center gap-3 text-secondary group/feature">
+                        <FiCheckCircle className="w-4 h-4 transition-transform group-hover/feature:scale-125" />
+                        <span className="text-primary/80 font-medium text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Decorative line */}
+              <div className="absolute bottom-0 left-10 right-10 h-1 bg-gradient-to-r from-transparent via-primary/10 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+            </motion.div>
+          ))}
         </div>
+        
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
+          <p className="text-primary/40 text-sm font-light italic">
+            {t("services.disclaimer")}
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,5 +1,7 @@
+import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Mariner Group Home",
@@ -12,6 +14,10 @@ export const metadata: Metadata = {
     "Evelyn Gonzalez",
   ],
   authors: [{ name: "Evelyn Gonzalez Inc." }],
+
+  icons: {
+  icon: "/favicon.ico",
+}
 };
 
 export default function RootLayout({
@@ -21,7 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased pt-20">
+        <LanguageProvider>
+          <Navbar />
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
