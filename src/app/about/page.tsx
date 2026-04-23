@@ -3,21 +3,34 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MdArrowBack } from "react-icons/md";
 import SectionHeader from "@/components/ui/SectionHeader";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+
+  const getText = (value: string | string[]) =>
+    Array.isArray(value) ? value.join(" ") : value;
+
   return (
     <main className="bg-white min-h-screen text-primary overflow-x-hidden">
 
-      {/* NAV */}
+      {/* NAVBAR WITH LANGUAGE TOGGLE */}
+      <Navbar />
+
+      {/* SPACER for fixed navbar */}
+      <div className="h-20" />
+
+      {/* BACK LINK */}
       <nav className="px-6 md:px-16 py-8 flex justify-between items-center">
         <Link href="/">
           <div className="flex items-center gap-2 cursor-pointer group">
             <MdArrowBack className="text-2xl text-secondary group-hover:text-primary transition-colors" />
             <span className="font-medium text-secondary group-hover:text-primary transition-colors">
-              Volver
+              {getText(t("aboutPage.back"))}
             </span>
           </div>
         </Link>
@@ -50,16 +63,16 @@ export default function AboutPage() {
     className="max-w-4xl mx-auto relative z-10"
   >
     <h1 className="text-[clamp(2.5rem,5vw,4.5rem)] font-serif leading-[1.1] mb-6">
-      About <span className="text-secondary">Mariner</span>
+      {getText(t("aboutPage.heroTitle1"))}{" "}
+      <span className="text-secondary">{getText(t("aboutPage.heroTitle2"))}</span>
       <br />
-      Group Home
+      {getText(t("aboutPage.heroTitle3"))}
     </h1>
 
     <div className="w-24 h-1 bg-secondary/30 mx-auto mb-8 rounded-full" />
 
     <p className="text-lg md:text-xl text-primary/70 font-light leading-relaxed max-w-2xl mx-auto">
-      A deeper look into the decisions, values, and philosophy behind a place
-      built not to manage people — but to truly understand them.
+      {getText(t("aboutPage.heroSubtitle"))}
     </p>
   </motion.div>
 </section>
@@ -81,36 +94,28 @@ export default function AboutPage() {
             {/* TEXT */}
             <div>
               <span className="text-xs tracking-[0.3em] uppercase text-primary/40">
-                About the home
+                {getText(t("aboutPage.sectionLabel"))}
               </span>
 
               <h2 className="text-3xl md:text-4xl font-serif mt-4 mb-6 leading-tight">
-                A different approach to care
+                {getText(t("aboutPage.sectionTitle"))}
               </h2>
 
               <p className="text-lg text-primary/70 leading-relaxed mb-6">
-                Mariner Group Home was not created to fill a gap in the market.
-                It was created to question how care is usually done.
+                {getText(t("aboutPage.intro1"))}
               </p>
 
               <div className="space-y-6 text-primary/80 leading-relaxed">
                 <p className="text-justify">
-                  In many places, care becomes structured to the point where it starts
-                  prioritizing efficiency over individuality. Routines are optimized,
-                  systems are refined, and slowly — almost without noticing — people are
-                  expected to fit into predefined rhythms that were never designed for them.
+                  {getText(t("aboutPage.intro2"))}
                 </p>
 
                 <p className="text-justify">
-                  This home exists as a response to that reality. Not by removing structure,
-                  but by redefining its purpose. Structure here is flexible, responsive,
-                  and built around the individual — not imposed onto them.
+                  {getText(t("aboutPage.intro3"))}
                 </p>
 
                 <p className="text-justify">
-                  What truly defines this place is not immediately visible. It is found in
-                  the pauses, in the patience of conversation, in the absence of urgency,
-                  and in the consistency of presence.
+                  {getText(t("aboutPage.intro4"))}
                 </p>
               </div>
             </div>
@@ -140,21 +145,15 @@ export default function AboutPage() {
             className="space-y-8 text-lg leading-relaxed text-primary/80 mb-20"
           >
             <p className="text-justify">
-              Care, in this context, is not a list of responsibilities. It is a
-              relationship that develops over time — shaped by attention, trust,
-              and repeated presence.
+              {getText(t("aboutPage.block1"))}
             </p>
 
             <p className="text-justify">
-              We do not approach individuals as cases to manage, but as people
-              whose lives already carry meaning. Our role is not to define that
-              meaning, but to support it without interference.
+              {getText(t("aboutPage.block2"))}
             </p>
 
             <p className="text-justify">
-              This is why presence matters more than perfection. Because real care
-              is not about doing everything flawlessly — it is about showing up
-              consistently, in ways that feel stable, respectful, and human.
+              {getText(t("aboutPage.block3"))}
             </p>
           </motion.div>
 
@@ -162,7 +161,7 @@ export default function AboutPage() {
           <div className="my-20 flex items-center gap-4">
             <div className="flex-1 h-px bg-primary/10" />
             <span className="text-xs tracking-[0.3em] text-primary/40 uppercase">
-              Responsibility
+              {getText(t("aboutPage.dividerLabel"))}
             </span>
             <div className="flex-1 h-px bg-primary/10" />
           </div>
@@ -175,19 +174,15 @@ export default function AboutPage() {
             className="space-y-6 text-lg leading-relaxed text-primary/80"
           >
             <h3 className="text-2xl md:text-3xl font-serif text-primary">
-              Commitment & Responsibility
+              {getText(t("aboutPage.commitmentTitle"))}
             </h3>
 
             <p className="text-justify">
-              Mariner Group Home operates under full licensing from the Florida
-              Agency for Persons with Disabilities (APD). Our caregivers are trained,
-              certified, and held to strict standards.
+              {getText(t("aboutPage.commitment1"))}
             </p>
 
             <p className="text-justify">
-              But compliance is not what defines this place. It is only the baseline.
-              What truly matters is how those standards are lived — daily, quietly,
-              and consistently — in every interaction.
+              {getText(t("aboutPage.commitment2"))}
             </p>
           </motion.div>
 
@@ -198,28 +193,26 @@ export default function AboutPage() {
       <section className="px-6 md:px-16 pb-24">
         <div className="max-w-4xl mx-auto space-y-10">
 
-          <SectionHeader title="Questions you might still have" align="center" />
+          <SectionHeader title={getText(t("aboutPage.faqTitle"))} align="center" />
 
           <motion.div className="bg-white border border-primary/5 rounded-[2rem] p-10 shadow-sm hover:shadow-md transition">
-            <h3 className="text-xl font-serif mb-4">How do I know this is the right place?</h3>
+            <h3 className="text-xl font-serif mb-4">{getText(t("aboutPage.faq1Title"))}</h3>
             <p className="text-primary/70 text-justify">
-              The only real way is to understand how a place thinks. What we offer
-              is clarity and transparency, so you can make that decision with confidence.
+              {getText(t("aboutPage.faq1Text"))}
             </p>
           </motion.div>
 
           <motion.div className="bg-sky-50/60 border border-sky-100 rounded-[2rem] p-10 hover:shadow-md transition">
-            <h3 className="text-xl font-serif mb-4">Will my family member feel safe?</h3>
+            <h3 className="text-xl font-serif mb-4">{getText(t("aboutPage.faq2Title"))}</h3>
             <p className="text-primary/80 text-justify">
-              Safety is built through consistency, familiarity, and respect — not just protocols.
+              {getText(t("aboutPage.faq2Text"))}
             </p>
           </motion.div>
 
           <motion.div className="bg-white border border-primary/5 rounded-[2rem] p-10 shadow-sm hover:shadow-md transition">
-            <h3 className="text-xl font-serif mb-4">Will they be understood?</h3>
+            <h3 className="text-xl font-serif mb-4">{getText(t("aboutPage.faq3Title"))}</h3>
             <p className="text-primary/70 text-justify">
-              Understanding takes time. That is why presence and observation
-              are central to how we provide care.
+              {getText(t("aboutPage.faq3Text"))}
             </p>
           </motion.div>
 
@@ -229,7 +222,7 @@ export default function AboutPage() {
       {/* CIERRE */}
       <section className="px-6 md:px-16 pb-24 text-center max-w-3xl mx-auto">
         <p className="text-2xl font-serif italic text-primary/70 leading-relaxed">
-          You are not just choosing a place. You are choosing who will be present in someone else’s everyday life.
+          {getText(t("aboutPage.closingQuote"))}
         </p>
       </section>
 

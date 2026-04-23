@@ -15,11 +15,11 @@ export default function Navbar() {
   const toggleLang = () => setLanguage(language === "en" ? "es" : "en");
 
   const navLinks = [
-    { name: t("nav.home"), href: "/#home" },
-    { name: t("nav.about"), href: "/#about" },
-    { name: t("nav.services"), href: "/#services" },
-    { name: t("nav.philosophy"), href: "/#philosophy" },
-    { name: t("nav.contact"), href: "/#contact" },
+    { name: t("nav.home") as string, href: "/#home" },
+    { name: t("nav.about") as string, href: "/#about" },
+    { name: t("nav.services") as string, href: "/#services" },
+    { name: t("nav.philosophy") as string, href: "/#philosophy" },
+    { name: t("nav.contact") as string, href: "/#contact" },
   ];
 
   return (

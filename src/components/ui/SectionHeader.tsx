@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
-  title: string;
-  subtitle?: string;
+  title: string | string[];
+  subtitle?: string | string[];
   overline?: string;
   align?: "left" | "center";
   className?: string;
@@ -12,13 +12,15 @@ interface SectionHeaderProps {
 }
 
 export default function SectionHeader({
-  title,
-  subtitle,
+  title: rawTitle,
+  subtitle: rawSubtitle,
   overline,
   align = "left",
   className = "",
   dark = false,
 }: SectionHeaderProps) {
+  const title = Array.isArray(rawTitle) ? rawTitle.join(" ") : rawTitle;
+  const subtitle = rawSubtitle ? (Array.isArray(rawSubtitle) ? rawSubtitle.join(" ") : rawSubtitle) : undefined;
   const isCenter = align === "center";
   const textColor = dark ? "text-white" : "text-primary";
   const subtitleColor = dark ? "text-white/70" : "text-primary/60";

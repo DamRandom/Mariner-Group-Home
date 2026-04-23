@@ -87,7 +87,7 @@ export default function CoreValues() {
           >
             {values.map((value, index) => (
               <motion.div
-                key={value.title}
+                key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
