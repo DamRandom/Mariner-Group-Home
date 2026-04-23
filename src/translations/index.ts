@@ -123,7 +123,8 @@ export const translations = {
       location: "Our Location",
       phone: "Phone",
       email: "Email",
-      mockAlert: "Thank you! Your message has been sent (Mockup).",
+      successAlert: "Thank you! Your message has been successfully sent.",
+      errorAlert: "An error occurred while sending your message. Please try again later.",
       viewMap: "View on Google Maps",
       errors: {
         nameReq: "Name is required",
@@ -295,7 +296,8 @@ export const translations = {
       location: "Nuestra Ubicación",
       phone: "Teléfono",
       email: "Correo electrónico",
-      mockAlert: "¡Gracias! Tu mensaje ha sido enviado (Simulación).",
+      successAlert: "¡Gracias! Tu mensaje ha sido enviado correctamente.",
+      errorAlert: "Ocurrió un error al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.",
       viewMap: "Ver en Google Maps",
       errors: {
         nameReq: "El nombre es obligatorio",

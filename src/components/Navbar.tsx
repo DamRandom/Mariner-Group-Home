@@ -26,6 +26,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-primary/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
+          
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-12 h-10 transition-transform duration-300 group-hover:scale-110">
@@ -33,7 +34,9 @@ export default function Navbar() {
                 src="/images/logo.png"
                 alt="Mariner Group Home Logo"
                 fill
+                sizes="(max-width: 768px) 48px, 48px"
                 className="object-contain"
+                priority
               />
             </div>
             <span className="text-xl font-serif text-primary hidden sm:block">
@@ -66,8 +69,9 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
-             {/* Language Toggle (Mobile) */}
-             <button
+            
+            {/* Language Toggle (Mobile) */}
+            <button
               onClick={toggleLang}
               className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary font-bold text-sm"
             >
@@ -75,6 +79,7 @@ export default function Navbar() {
               <span className="mx-1 opacity-20">|</span>
               <span className={language === "es" ? "opacity-100" : "opacity-40"}>ES</span>
             </button>
+
             <button
               onClick={toggleMenu}
               className="text-primary p-2 focus:outline-none"
