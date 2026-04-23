@@ -42,7 +42,7 @@ export default function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {trustItems.map((item, index) => (
             <motion.div
-              key={index} // ✅ FIX AQUÍ
+              key={index} 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
