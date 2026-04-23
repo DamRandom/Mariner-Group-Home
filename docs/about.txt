@@ -1,0 +1,25 @@
+1:"$Sreact.fragment"
+2:I[2055,["537","static/chunks/93854f56-e4ccdff6b6c5923e.js","766","static/chunks/766-53ec6b1f5b69e844.js","31","static/chunks/31-ef30ced43c3546a0.js","55","static/chunks/55-4dae6d2c607c6191.js","177","static/chunks/app/layout-48b9b71c1c191a0f.js"],"LanguageProvider"]
+3:I[5494,["537","static/chunks/93854f56-e4ccdff6b6c5923e.js","766","static/chunks/766-53ec6b1f5b69e844.js","31","static/chunks/31-ef30ced43c3546a0.js","55","static/chunks/55-4dae6d2c607c6191.js","177","static/chunks/app/layout-48b9b71c1c191a0f.js"],"default"]
+4:I[7555,[],""]
+5:I[1295,[],""]
+6:I[894,[],"ClientPageRoot"]
+7:I[5550,["537","static/chunks/93854f56-e4ccdff6b6c5923e.js","263","static/chunks/bc9c3264-e8250e5abe6ea8a7.js","766","static/chunks/766-53ec6b1f5b69e844.js","31","static/chunks/31-ef30ced43c3546a0.js","934","static/chunks/934-58024c7976a7e46d.js","55","static/chunks/55-4dae6d2c607c6191.js","220","static/chunks/app/about/page-98ef5e26078a971a.js"],"default"]
+a:I[9665,[],"MetadataBoundary"]
+c:I[9665,[],"OutletBoundary"]
+f:I[4911,[],"AsyncMetadataOutlet"]
+11:I[6079,["766","static/chunks/766-53ec6b1f5b69e844.js","209","static/chunks/app/loading-8fdcf7877988024d.js"],"default"]
+12:I[9665,[],"ViewportBoundary"]
+14:I[6614,[],""]
+:HL["/_next/static/css/0cacf5ed27146cd9.css","style"]
+0:{"P":null,"b":"NfkEkrIGrVWqjNmHZPlpR","p":"","c":["","about"],"i":false,"f":[[["",{"children":["about",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/0cacf5ed27146cd9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"className":"font-sans antialiased pt-20","children":["$","$L2",null,{"children":[["$","$L3",null,{}],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]}]]}],{"children":["about",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L6",null,{"Component":"$7","searchParams":{},"params":{},"promises":["$@8","$@9"]}],["$","$La",null,{"children":"$Lb"}],null,["$","$Lc",null,{"children":["$Ld","$Le",["$","$Lf",null,{"promise":"$@10"}]]}]]}],{},null,false]},null,false]},[["$","$L11","l",{}],[],[]],false],["$","$1","h",{"children":[null,["$","$1","GuMgrD3ZlNfpV6TBng4lf",{"children":[["$","$L12",null,{"children":"$L13"}],null]}],null]}],false]],"m":"$undefined","G":["$14","$undefined"],"s":false,"S":true}
+15:"$Sreact.suspense"
+16:I[4911,[],"AsyncMetadata"]
+8:{}
+9:{}
+b:["$","$15",null,{"fallback":null,"children":["$","$L16",null,{"promise":"$@17"}]}]
+e:null
+13:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+d:null
+17:{"metadata":[["$","title","0",{"children":"Mariner Group Home"}],["$","meta","1",{"name":"description","content":"Care services in Florida: Home & Community Services with dignity, care, and a name you can trust."}],["$","meta","2",{"name":"author","content":"Evelyn Gonzalez Inc."}],["$","meta","3",{"name":"keywords","content":"Mariner Group Home,Home Services,Community Care,Evelyn Gonzalez"}],["$","link","4",{"rel":"icon","href":"/favicon.ico"}]],"error":null,"digest":"$undefined"}
+10:{"metadata":"$17:metadata","error":null,"digest":"$undefined"}

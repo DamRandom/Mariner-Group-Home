@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function useContactForm(t: any) {
+export function useContactForm(t: (key: string) => string | string[]) {
     const [formState, setFormState] = useState({
         name: "",
         email: "",
@@ -20,26 +20,26 @@ export function useContactForm(t: any) {
         let isValid = true;
 
         if (!formState.name.trim()) {
-            newErrors.name = t("contact.errors.nameReq");
+            newErrors.name = t("contact.errors.nameReq") as string;
             isValid = false;
         } else if (!/^[A-Za-z\s]+$/.test(formState.name)) {
-            newErrors.name = t("contact.errors.nameInvalid");
+            newErrors.name = t("contact.errors.nameInvalid") as string;
             isValid = false;
         }
 
         if (!formState.email.trim()) {
-            newErrors.email = t("contact.errors.emailReq");
+            newErrors.email = t("contact.errors.emailReq") as string;
             isValid = false;
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
-            newErrors.email = t("contact.errors.emailInvalid");
+            newErrors.email = t("contact.errors.emailInvalid") as string;
             isValid = false;
         }
 
         if (!formState.message.trim()) {
-            newErrors.message = t("contact.errors.messageReq");
+            newErrors.message = t("contact.errors.messageReq") as string;
             isValid = false;
         } else if (formState.message.length > 500) {
-            newErrors.message = t("contact.errors.messageMax");
+            newErrors.message = t("contact.errors.messageMax") as string;
             isValid = false;
         }
 
@@ -71,14 +71,14 @@ export function useContactForm(t: any) {
             const data = await res.json();
 
             if (res.ok) {
-                alert(t("contact.successAlert"));
+                alert(t("contact.successAlert") as string);
                 setFormState({ name: "", email: "", message: "" });
                 setErrors({ name: "", email: "", message: "" });
             } else {
-                alert(data.error || t("contact.errorAlert"));
+                alert(data.error || (t("contact.errorAlert") as string));
             }
         } catch {
-            alert(t("contact.errorAlert"));
+            alert(t("contact.errorAlert") as string);
         } finally {
             setIsSubmitting(false);
         }

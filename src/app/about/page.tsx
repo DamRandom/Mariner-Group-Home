@@ -71,7 +71,7 @@ export default function AboutPage() {
 
     <div className="w-24 h-1 bg-secondary/30 mx-auto mb-8 rounded-full" />
 
-    <p className="text-lg md:text-xl text-primary/70 font-light leading-relaxed max-w-2xl mx-auto">
+    <p className="text-lg md:text-xl text-primary/80 font-light leading-relaxed max-w-2xl mx-auto">
       {getText(t("aboutPage.heroSubtitle"))}
     </p>
   </motion.div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 {getText(t("aboutPage.sectionTitle"))}
               </h2>
 
-              <p className="text-lg text-primary/70 leading-relaxed mb-6">
+              <p className="text-lg text-primary/80 leading-relaxed mb-6">
                 {getText(t("aboutPage.intro1"))}
               </p>
 
@@ -197,7 +197,7 @@ export default function AboutPage() {
 
           <motion.div className="bg-white border border-primary/5 rounded-[2rem] p-10 shadow-sm hover:shadow-md transition">
             <h3 className="text-xl font-serif mb-4">{getText(t("aboutPage.faq1Title"))}</h3>
-            <p className="text-primary/70 text-justify">
+            <p className="text-primary/80 text-justify">
               {getText(t("aboutPage.faq1Text"))}
             </p>
           </motion.div>
@@ -211,7 +211,7 @@ export default function AboutPage() {
 
           <motion.div className="bg-white border border-primary/5 rounded-[2rem] p-10 shadow-sm hover:shadow-md transition">
             <h3 className="text-xl font-serif mb-4">{getText(t("aboutPage.faq3Title"))}</h3>
-            <p className="text-primary/70 text-justify">
+            <p className="text-primary/80 text-justify">
               {getText(t("aboutPage.faq3Text"))}
             </p>
           </motion.div>
@@ -221,7 +221,7 @@ export default function AboutPage() {
 
       {/* CIERRE */}
       <section className="px-6 md:px-16 pb-24 text-center max-w-3xl mx-auto">
-        <p className="text-2xl font-serif italic text-primary/70 leading-relaxed">
+        <p className="text-2xl font-serif italic text-primary/80 leading-relaxed">
           {getText(t("aboutPage.closingQuote"))}
         </p>
       </section>

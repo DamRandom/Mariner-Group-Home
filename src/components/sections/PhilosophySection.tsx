@@ -1,53 +1,58 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
+import { useMemo } from "react";
 
 export default function PhilosophySection() {
   const { t } = useLanguage();
 
+  // evita re-render innecesario de strings múltiples
+  const texts = useMemo(
+    () => ({
+      p1: t("philosophy.p1"),
+      p2: t("philosophy.p2"),
+      p3: t("philosophy.p3"),
+      p4: t("philosophy.p4"),
+    }),
+    [t]
+  );
+
   return (
-    <section id="philosophy" className="bg-white text-primary py-24 px-6 md:px-16">
+    <section
+      id="philosophy"
+      className="bg-white text-primary py-24 px-6 md:px-16"
+    >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        {/* Text content */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
+
+        {/* TEXT */}
+        <div
           className="max-w-xl"
         >
-          <SectionHeader 
-            title={t("philosophy.title") as string}
-          />
+          <SectionHeader title={t("philosophy.title") as string} />
 
           <div className="space-y-6">
             <p className="text-base md:text-lg font-light leading-relaxed text-primary/80 text-justify">
-              {t("philosophy.p1")}
+              {texts.p1}
             </p>
 
             <p className="text-base md:text-lg font-light leading-relaxed text-primary/80 text-justify">
-              {t("philosophy.p2")}
+              {texts.p2}
             </p>
 
             <p className="text-base md:text-lg font-light leading-relaxed text-primary/80 text-justify">
-              {t("philosophy.p3")}
+              {texts.p3}
             </p>
 
             <p className="text-base md:text-lg font-light leading-relaxed text-primary/80 text-justify">
-              {t("philosophy.p4")}
+              {texts.p4}
             </p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-          viewport={{ once: true }}
+        {/* IMAGE */}
+        <div
           className="relative w-full rounded-3xl overflow-hidden shadow-2xl border border-primary/5 bg-white flex items-center justify-center min-h-[300px]"
         >
           <Image
@@ -55,10 +60,12 @@ export default function PhilosophySection() {
             alt="Personalized care"
             width={1200}
             height={800}
-            priority
             className="w-full h-auto object-contain max-h-[600px]"
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

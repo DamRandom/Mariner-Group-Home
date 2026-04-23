@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -28,7 +27,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" aria-label="Home" className="flex items-center gap-3 group">
             <div className="relative w-12 h-10 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/images/logo.png"
@@ -50,7 +49,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-primary/70 hover:text-primary transition-colors duration-200 font-medium"
+                className="text-primary/80 hover:text-primary transition-colors duration-200 font-medium"
               >
                 {link.name}
               </Link>
@@ -59,6 +58,7 @@ export default function Navbar() {
             {/* Language Toggle */}
             <button
               onClick={toggleLang}
+              aria-label={`Switch to ${language === "en" ? "Spanish" : "English"}`}
               className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-200 bg-primary/5 text-primary font-bold text-sm"
             >
               <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
@@ -73,6 +73,7 @@ export default function Navbar() {
             {/* Language Toggle (Mobile) */}
             <button
               onClick={toggleLang}
+              aria-label={`Switch to ${language === "en" ? "Spanish" : "English"}`}
               className="flex items-center gap-1 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary font-bold text-sm"
             >
               <span className={language === "en" ? "opacity-100" : "opacity-40"}>EN</span>
@@ -82,7 +83,9 @@ export default function Navbar() {
 
             <button
               onClick={toggleMenu}
-              className="text-primary p-2 focus:outline-none"
+              aria-expanded={isOpen}
+              aria-label="Toggle Navigation Menu"
+              className="text-primary p-2 focus:outline-none min-w-[48px] min-h-[48px] flex items-center justify-center"
             >
               {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
             </button>
@@ -91,29 +94,22 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-primary/10 overflow-hidden"
-          >
+      <div
+        className={`md:hidden bg-white border-b border-primary/10 overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
+      >
             <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-base font-medium text-primary/70 hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
+                  className="block px-3 py-3 text-base font-medium text-primary/80 hover:text-primary hover:bg-primary/5 rounded-lg transition-all"
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </nav>
   );
 }

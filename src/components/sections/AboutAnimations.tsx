@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import SectionHeader from "../ui/SectionHeader";
 import { useLanguage } from "@/context/LanguageContext";
@@ -14,33 +13,19 @@ export default function AboutAnimations() {
   return (
     <>
       {/* TITLE */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
+      <div>
         <SectionHeader title={getText(t("about.title"))} align="center" />
-      </motion.div>
+      </div>
 
       {/* DESCRIPTION */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        viewport={{ once: true }}
-      >
+      <div>
         <p className="text-xl md:text-2xl font-light leading-relaxed mb-16 text-primary/90 text-justify">
           {getText(t("about.description"))}
         </p>
-      </motion.div>
+      </div>
 
       {/* QUOTE */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true }}
+      <div
         className="relative px-8 py-12 md:px-16 md:py-16 rounded-[2.5rem] bg-sky-50/50 border border-sky-100/50 backdrop-blur-sm shadow-sm hover:shadow-md transition-shadow"
       >
         <span className="absolute top-6 left-8 text-7xl text-primary/10 font-serif leading-none">
@@ -63,25 +48,20 @@ export default function AboutAnimations() {
         <span className="absolute bottom-6 right-8 text-7xl text-primary/10 font-serif rotate-180 leading-none">
           “
         </span>
-      </motion.div>
+      </div>
 
       {/* CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        viewport={{ once: true }}
+      <div
         className="mt-20"
       >
-        <Link href="/about">
+        <Link href="/about" aria-label="Read more about us">
           <button
-            aria-label="Read more about us"
-            className="bg-primary text-white px-10 py-5 rounded-full font-medium shadow-xl hover:bg-secondary transition-all duration-300 border border-primary/10"
+            className="bg-primary text-white px-10 py-5 rounded-full font-medium shadow-xl hover:bg-secondary hover:scale-105 active:scale-95 transition-all duration-300 border border-primary/10"
           >
             {getText(t("about.readMore"))}
           </button>
         </Link>
-      </motion.div>
+      </div>
     </>
   );
 }

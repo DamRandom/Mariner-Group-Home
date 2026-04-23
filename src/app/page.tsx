@@ -1,13 +1,15 @@
 import Hero from "@/components/sections/Hero";
-import AboutUsSection from "@/components/sections/AboutUsSection";
-import HomeGallery from "@/components/sections/HomeGallery";
-import CoreValues from "@/components/sections/CoreValues";
-import PhilosophySection from "@/components/sections/PhilosophySection";
-import ServicesSection from "@/components/sections/Services";
-import TrustSection from "@/components/sections/TrustSection";
-import RealLifeGallery from "@/components/sections/RealLifeGallery";
-import ContactSection from "@/components/sections/Contact";
+import dynamic from "next/dynamic";
 import Footer from "@/components/Footer";
+
+const AboutUsSection = dynamic(() => import("@/components/sections/AboutUsSection"));
+const HomeGallery = dynamic(() => import("@/components/sections/HomeGallery"));
+const CoreValues = dynamic(() => import("@/components/sections/CoreValues"));
+const PhilosophySection = dynamic(() => import("@/components/sections/PhilosophySection"));
+const ServicesSection = dynamic(() => import("@/components/sections/Services"));
+const TrustSection = dynamic(() => import("@/components/sections/TrustSection"));
+const RealLifeGallery = dynamic(() => import("@/components/sections/RealLifeGallery"));
+const ContactSection = dynamic(() => import("@/components/sections/ContactSection"));
 
 export default function Home() {
   return (

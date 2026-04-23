@@ -6,7 +6,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 export const metadata: Metadata = {
   title: "Mariner Group Home",
   description:
-    "Home & Community Services with dignity, care, and a name you can trust.",
+    "Care services in Florida: Home & Community Services with dignity, care, and a name you can trust.",
   keywords: [
     "Mariner Group Home",
     "Home Services",
