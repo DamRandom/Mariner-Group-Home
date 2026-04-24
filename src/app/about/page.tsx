@@ -128,7 +128,7 @@ export default function AboutPage() {
               className="relative rounded-[2rem] overflow-hidden border border-primary/5 shadow-2xl"
             >
               <Image
-                src="/images/living7.png"
+                src="/images/living5.png"
                 alt="home environment"
                 width={800}
                 height={600}
