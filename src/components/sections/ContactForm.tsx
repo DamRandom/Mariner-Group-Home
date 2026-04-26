@@ -1,6 +1,7 @@
     "use client";
 
     import { useState, useCallback } from "react";
+    import { motion, AnimatePresence } from "framer-motion";
     import SectionHeader from "../ui/SectionHeader";
     import { useLanguage } from "@/context/LanguageContext";
 
@@ -23,13 +24,18 @@
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [notification, setNotification] = useState<{
+        type: "success" | "error";
+        message: string;
+    } | null>(null);
 
     const handleChange = useCallback(
         (field: keyof typeof formState, value: string) => {
         setFormState((prev) => ({ ...prev, [field]: value }));
         setErrors((prev) => ({ ...prev, [field]: "" }));
+        if (notification) setNotification(null);
         },
-        []
+        [notification]
     );
 
     const validate = useCallback(() => {
@@ -66,18 +72,48 @@
 
     const handleSubmit = useCallback(
         async (e: React.FormEvent) => {
-        e.preventDefault();
-        if (!validate()) return;
+            e.preventDefault();
+            if (!validate()) return;
 
-        setIsSubmitting(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+            setIsSubmitting(true);
 
-        alert(t("contact.mockAlert"));
-        setFormState({ name: "", email: "", message: "" });
-        setErrors({ name: "", email: "", message: "" });
-        setIsSubmitting(false);
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formState),
+                });
+
+                if (response.ok) {
+                    setNotification({
+                        type: "success",
+                        message: t("contact.successAlert") as string,
+                    });
+                    setFormState({ name: "", email: "", message: "" });
+                    setErrors({ name: "", email: "", message: "" });
+                    
+                    // Auto-hide success message
+                    setTimeout(() => setNotification(null), 5000);
+                } else {
+                    const data = await response.json();
+                    setNotification({
+                        type: "error",
+                        message: data.error || (t("contact.errorAlert") as string),
+                    });
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                setNotification({
+                    type: "error",
+                    message: t("contact.errorAlert") as string,
+                });
+            } finally {
+                setIsSubmitting(false);
+            }
         },
-        [validate, t]
+        [formState, validate, t]
     );
 
     const inputClasses = useCallback(
@@ -145,13 +181,47 @@
             )}
             </div>
 
-            <button
-            disabled={isSubmitting}
-            type="submit"
-            className="w-full bg-primary text-white py-4 rounded-xl hover:scale-105 transition-all"
-            >
-            {isSubmitting ? "..." : (t("contact.sendBtn") as string)}
-            </button>
+            <div className="relative h-[60px]">
+                <AnimatePresence mode="wait">
+                    {!notification || notification.type === "error" ? (
+                        <motion.button
+                            key="submit-btn"
+                            disabled={isSubmitting}
+                            type="submit"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className={`w-full h-full text-white py-4 rounded-xl font-medium transition-all flex items-center justify-center gap-3 shadow-lg ${
+                                notification?.type === "error" ? "bg-red-500" : "bg-primary hover:scale-[1.02] active:scale-95"
+                            } disabled:opacity-70 disabled:hover:scale-100`}
+                        >
+                            {isSubmitting ? (
+                                <motion.div
+                                    initial={{ rotate: 0 }}
+                                    animate={{ rotate: 360 }}
+                                    transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                                    className="h-6 w-6 border-2 border-white/30 border-t-white rounded-full"
+                                />
+                            ) : (
+                                <span>{notification?.type === "error" ? notification.message : t("contact.sendBtn")}</span>
+                            )}
+                        </motion.button>
+                    ) : (
+                        <motion.div
+                            key="success-msg"
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            className="w-full h-full bg-green-500 text-white rounded-xl flex items-center justify-center gap-3 shadow-lg font-medium px-4 text-center"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span className="text-sm md:text-base">{t("contact.successAlert")}</span>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </div>
         </form>
         </div>
     );

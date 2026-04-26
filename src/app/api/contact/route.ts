@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     });
 
     const mailOptions = {
-      from: `"${name}" <${email}>`, // El correo dice venir del cliente, pero realmente se envía autenticado por EMAIL_USER
+      from: `"${name}" <${EMAIL_USER}>`, // Usamos EMAIL_USER para asegurar la entrega, el remitente real va en replyTo
       to: 'absolutequalityservices752@gmail.com',
       replyTo: email,
       subject: `Nuevo mensaje de contacto en Mariner Group Home de: ${name}`,

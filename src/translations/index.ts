@@ -89,7 +89,7 @@ export const translations = {
       title: "Licensed & Trusted Care",
       subtitle: "Your trust is our foundation. We maintain the highest standards of accountability and regulatory compliance to ensure the safety of our residents.",
       licensed: {
-        title: "Fully Licensed",
+        title: "APD Licensed",
         desc: "Operational license verified by state health and community authorities.",
       },
       certified: {
@@ -262,7 +262,7 @@ export const translations = {
       title: "Cuidado Licenciado y Confiable",
       subtitle: "Su confianza es nuestra base. Mantenemos los más altos estándares de responsabilidad y cumplimiento normativo para garantizar la seguridad de nuestros residentes.",
       licensed: {
-        title: "Totalmente Licenciado",
+        title: "Licencia por APD",
         desc: "Licencia operativa verificada por las autoridades estatales de salud y comunidad.",
       },
       certified: {
